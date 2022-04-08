@@ -1,0 +1,44 @@
+{
+    "$schema": "https://docs.facets.cloud/schemas/jobs/instances/job.schema",
+    "apiVersion": "v2",
+    "disabled": false,
+    "kind": "facets.modules.common.application.job",
+    "metadata": {},
+    "spec": {
+        "env": {
+            "MYSQL_PASSWORD": {
+                "type": "credential",
+                "permissionName": "killbill-permissions",
+                "attribute": "password"
+              },
+              "MYSQL_HOST": {
+                "type": "static",
+                "default": "killbill-db"
+              },
+              "MYSQL_USER": {
+                "type": "credential",
+                "permissionName": "killbill-permissions",
+                "attribute": "userName"
+              }
+        },
+        "permission": [
+            {
+                "name": "killbill-permissions",
+                "resourceType": "mysql",
+                "resourceName": "killbill-db",
+                "permission": "MANAGEMENT"
+                
+            }
+        ],
+        "release": {
+            "build": {
+                "image": "313496281593.dkr.ecr.us-east-1.amazonaws.com/facets/kb-facets/mysql:10"
+            },
+            "strategy": "RollingUpdate"
+        },
+        "runtime": {
+            "size": {
+                "value": "small"            }
+        }
+    }
+}
