@@ -4,7 +4,11 @@
         "KUBERNETES": "1.19"
     },
     "composition": {
-        "plugins": []
+        "plugins": [
+            {
+            "name": "logging_nfs"
+            }
+        ]
     },
     "clusterVariablesMeta": {}
     

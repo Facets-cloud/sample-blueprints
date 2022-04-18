@@ -1,68 +1,67 @@
 {
-    "$schema": "https://docs.facets.cloud/schemas/application/instances/application.schema",
-    "kind": "facets.modules.common.application",
-    "disabled": false,
-    "apiVersion": "v2",
-    "metadata": {
-    },
-    "spec": {
-      "env": {
-        "KILLBILL_DAO_PASSWORD": {
-          "type": "credential",
-          "permissionName": "killbill-permissions",
-          "attribute": "password"
-        },
-        "KILLBILL_DAO_URL": {
-          "type": "static",
-          "default": "jdbc:mysql://killbill-db:3306/killbill"
-        },
-        "KILLBILL_DAO_USER": {
-          "type": "credential",
-          "permissionName": "killbill-permissions",
-          "attribute": "userName"
-        }
+  "$schema": "https://docs.facets.cloud/schemas/application/instances/application.schema",
+  "kind": "facets.modules.common.application",
+  "disabled": false,
+  "apiVersion": "v2",
+  "metadata": {
+  },
+  "spec": {
+    "env": {
+      "KILLBILL_DAO_PASSWORD": {
+        "type": "credential",
+        "permissionName": "killbill-permissions",
+        "attribute": "password"
       },
-      "loadbalancing": {
-        "rules": [
-          {
-            "ingress": "ingress",
-            "path": "/",
-            "portName": "port8080",
-            "domainPrefix": "killbill"
-          }
-        ]
+      "KILLBILL_DAO_URL": {
+        "type": "static",
+        "default": "jdbc:mysql://killbill-db:3306/killbill?usePipelineAuth=false&useBatchMultiSend=false"
       },
-      "permission": [
-        {
-          "name": "killbill-permissions",
-          "resourceType": "mysql",
-          "resourceName": "killbill-db",
-          "permission": "READ_WRITE"
-        }
-      ],
-      "release": {
-        "strategy": "RollingUpdate",
-        "build": {
-          "image": "313496281593.dkr.ecr.us-east-1.amazonaws.com/facets/kb-facets/killbill:0.22.26"
-        }
-      },
-      "runtime": {
-        "size": {
-          "value": "small",
-          "namespace": "GP"
-        },
-        "autoscaling": {
-          "cpuThreshold": "50",
-          "max": 1,
-          "min": 1
-        },
-        "ports": [
-          {
-            "name": "port8080",
-            "port": 8080
-          }
-        ]
+      "KILLBILL_DAO_USER": {
+        "type": "credential",
+        "permissionName": "killbill-permissions",
+        "attribute": "userName"
       }
+    },
+    "loadbalancing": {
+      "rules": [
+        {
+          "ingress": "ingress",
+          "path": "/",
+          "portName": "port8080",
+          "domainPrefix": "killbill"
+        }
+      ]
+    },
+    "permission": [
+      {
+        "name": "killbill-permissions",
+        "resourceType": "mysql",
+        "resourceName": "killbill-db",
+        "permission": "READ_WRITE"
+      }
+    ],
+    "release": {
+      "strategy": "RollingUpdate",
+      "build": {
+        "image": "killbill/killbill:latest"
+      }
+    },
+    "runtime": {
+      "size": {
+        "value": "small",
+        "namespace": "GP"
+      },
+      "autoscaling": {
+        "cpuThreshold": "50",
+        "max": 1,
+        "min": 1
+      },
+      "ports": [
+        {
+          "name": "port8080",
+          "port": 8080
+        }
+      ]
     }
   }
-  
+}

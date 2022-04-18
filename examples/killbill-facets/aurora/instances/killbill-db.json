@@ -8,6 +8,7 @@
     "schema_dir": "schema/airflow",
     "seed_data_dir": "seed_data/airflow",
     "views_dir" :  "database_views/airflow",
+    "use_default_parameters": true,
     "mysqlConfigOverrides": {
       "explicit_defaults_for_timestamp" : "1"
     }
