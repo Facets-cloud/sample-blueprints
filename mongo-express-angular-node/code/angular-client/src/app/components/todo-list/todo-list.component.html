@@ -1,1 +1,17 @@
-<p>todo-list works!</p>
+<div class="card">
+  <h5 class="card-header">My Todo List</h5>
+  <div class="card-body">
+    <!--  -->
+    <ul class="list-group" *ngFor="let todo of todoList">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center mb-2"
+      >
+        <div>
+          <h6>{{ todo?.name }}</h6>
+          <p>{{ todo?.description }}</p>
+        </div>
+        <input type="checkbox" [checked]="todo?.completed" disabled />
+      </li>
+    </ul>
+  </div>
+</div>
