@@ -1,0 +1,26 @@
+{
+  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/postgres/postgres.schema.json",
+  "provided": false,
+  "kind": "postgres",
+  "version": "0.1",
+  "depends_on": [],
+  "disabled": true,
+  "lifecycle": "ENVIRONMENT",
+  "metadata": {
+    "name": "daw"
+  },
+  "flavor": "aurora",
+  "spec": {
+    "postgres_version": "12.11",
+    "size": {
+      "writer": {
+        "instance": "db.t3.medium",
+        "instance_count": 1
+      },
+      "reader": {
+        "instance": "db.t3.medium",
+        "instance_count": 1
+      }
+    }
+  }
+}
