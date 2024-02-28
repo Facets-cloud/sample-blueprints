@@ -24,7 +24,7 @@
         "domain_prefix": ""
       },
       "springboot": {
-        "service_name": "${service.petclinic-springboot.out.interfaces.http.name}}",
+        "service_name": "${service.petclinic-springboot.out.interfaces.http.name}",
         "path": "/",
         "port": "${service.petclinic-springboot.out.interfaces.http.port}",
         "domain_prefix": ""
