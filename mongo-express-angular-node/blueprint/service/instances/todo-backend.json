@@ -32,7 +32,7 @@
       },
       "ports": {
         "http": {
-          "port": "5200",
+          "port": "8080",
           "protocol": "tcp"
         }
       },
@@ -44,7 +44,7 @@
       "health_checks": {
         "timeout": "10",
         "period": "30",
-        "port": "5200",
+        "port": "8080",
         "start_up_time": "15"
       },
       "volumes": {}

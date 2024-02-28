@@ -27,8 +27,8 @@ connectToDatabase(MONGO_DB_URI)
     app.use("/", todoRouter);
 
     // start the Express server
-    app.listen(5200, () => {
-      console.log(`Server running at http://localhost:5200...`);
+    app.listen(8080, () => {
+      console.log(`Server running at http://localhost:8080...`);
     });
   })
   .catch((error) => console.error(error));
