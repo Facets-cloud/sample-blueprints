@@ -51,7 +51,7 @@
     },
     "env": {
       "LOG_LEVEL": "INFO",
-      "MONGO_DB_URI": ""
+      "MONGO_DB_URI": "${mongo.todo-db.out.interfaces.cluster.connection_string}"
     }
   }
 }
