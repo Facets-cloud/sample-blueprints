@@ -6,18 +6,30 @@ export const collections: {
 } = {};
 
 export async function connectToDatabase(uri: string) {
-  console.log("Connection string is ", uri);
   const client = new mongodb.MongoClient(uri);
   try {
     // const client = new mongodb.MongoClient(uri);
     await client.connect();
 
-    const db = client.db("todo-list-collection");
+    const db = client.db("todo-list-database");
 
-    const employeesCollection = db.collection<Task>("tasks");
-    collections.tasks = employeesCollection;
-    console.log("Connected to the database");
+    const taskCollection = db.collection<Task>("tasks");
+    collections.tasks = taskCollection;
+
+    // Clear existing data in the 'tasks' collection
+    await taskCollection.deleteMany({});
+    // Adding two entries into the 'tasks' collection
+    const task1: Task = {
+      name: "Sanity",
+      description: "Perform sanity in facetsdemo and root",
+      completed: false,
+    };
+    const task2: Task = {
+      name: "Release",
+      description: "Perform tag cut and promotion",
+      completed: true,
+    };
+    await taskCollection.insertMany([task1, task2]);
   } finally {
-    await client.close();
   }
 }

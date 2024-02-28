@@ -18,8 +18,13 @@ if (!MONGO_DB_URI) {
 connectToDatabase(MONGO_DB_URI)
   .then(() => {
     var app = express();
-    app.use(cors());
-    app.use("/api", todoRouter);
+
+    const corsOptions = {
+      origin: "*",
+      optionsSuccessStatus: 200,
+    };
+    app.use(cors(corsOptions));
+    app.use("/", todoRouter);
 
     // start the Express server
     app.listen(5200, () => {
