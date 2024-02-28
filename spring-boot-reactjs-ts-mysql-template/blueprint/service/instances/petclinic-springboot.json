@@ -5,7 +5,7 @@
     "labels": {}
   },
   "kind": "service",
-  "disabled": true,
+  "disabled": false,
   "provided": false,
   "version": "0.1",
   "spec": {
@@ -16,8 +16,8 @@
         "type": "RollingUpdate"
       },
       "build": {
-        "artifactory": "default",
-        "name": "replace-with-app-name"
+        "artifactory": "facets-config-auto",
+        "name": "springboot-petclinic-CI"
       }
     },
     "runtime": {
