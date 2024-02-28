@@ -4,22 +4,25 @@
   "kind": "postgres",
   "version": "0.1",
   "depends_on": [],
-  "disabled": true,
+  "disabled": false,
   "lifecycle": "ENVIRONMENT",
   "metadata": {
-    "name": "daw"
+    "name": "rpe-test-postgres"
   },
-  "flavor": "aurora",
+  "flavor": "k8s",
   "spec": {
-    "postgres_version": "12.11",
+    "postgres_version": "12",
     "size": {
       "writer": {
-        "instance": "db.t3.medium",
-        "instance_count": 1
+        "cpu": "1",
+        "memory": "1.5Gi",
+        "volume": "10G"
       },
       "reader": {
-        "instance": "db.t3.medium",
-        "instance_count": 1
+        "cpu": "1",
+        "memory": "1.5Gi",
+        "instance_count": 0,
+        "volume": "10G"
       }
     }
   }
