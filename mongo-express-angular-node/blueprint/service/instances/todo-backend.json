@@ -50,7 +50,8 @@
       "volumes": {}
     },
     "env": {
-      "LOG_LEVEL": "INFO"
+      "LOG_LEVEL": "INFO",
+      "MONGO_DB_URI": ""
     }
   }
 }
