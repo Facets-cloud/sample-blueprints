@@ -47,11 +47,11 @@
     },
     "env": {
       "LOG_LEVEL": "INFO",
-      "DB_USER": "${postgres.rpe-postgres.out.interfaces.writer.username}",
-      "DB_PASSWORD": "${postgres.rpe-postgres.out.interfaces.writer.password}",
-      "DB_HOST": "${postgres.rpe-postgres.out.interfaces.writer.host}",
-      "DB_PORT": "${postgres.rpe-postgres.out.interfaces.writer.port}",
-      "DB_NAME": "${postgres.rpe-postgres.out.interfaces.writer.name}"
+      "DB_USER": "${postgres.rpe-test-postgres.out.interfaces.writer.username}",
+      "DB_PASSWORD": "${postgres.rpe-test-postgres.out.interfaces.writer.password}",
+      "DB_HOST": "${postgres.rpe-test-postgres.out.interfaces.writer.host}",
+      "DB_PORT": "${postgres.rpe-test-postgres.out.interfaces.writer.port}",
+      "DB_NAME": "${postgres.rpe-test-postgres.out.interfaces.writer.name}"
     }
   }
 }
