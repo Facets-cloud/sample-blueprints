@@ -1,0 +1,52 @@
+name: Build react-postgresql-express/app-code/server
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'react-postgresql-express/app-code/server/**'
+env:
+  SERVICE_NAME: "control-plane-test"
+  RELEASE_STREAM: "STAGING"
+  QA_BRANCH: "master"
+  CP_URL: "https://facetsdemo.console.facets.cloud/"
+  EMAIL: ${{ vars.FACETS_EMAIL }}
+  TOKEN: ${{ secrets.FACETS_TOKEN }}
+        
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup NodeJS
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18
+
+    - name: Install @facets-cloud/facetsctl
+      run: |
+        echo "Installing @facets-cloud/facetsctl"
+        npm install -g @facets-cloud/facetsctl
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Docker build
+      run: |
+        cd react-postgresql-express/app-code/server/
+        TAG_NAME=$(echo $GITHUB_REF | awk -F/ '{print $3}')
+        # echo "Building Docker Image"
+        # docker build -t $SERVICE_NAME:${TAG_NAME}_${GITHUB_RUN_ID} .
+
+    - name: Push Docker Image
+      run: |
+        TAG_NAME=$(echo $GITHUB_REF | awk -F/ '{print $3}')
+        echo "Logging into Facets Cloud: $EMAIL - $TAG_NAME"
+        # facetsctl login -u $EMAIL -t $TOKEN -c $CP_URL
+        # if [ "$TAG_NAME" == "$QA_BRANCH" ]; then RELEASE_STREAM="QA"; fi
+        # echo "Using release stream $RELEASE_STREAM"
+        # echo "Pushing Docker Image"
+        # facetsctl push --docker-image $SERVICE_NAME:${TAG_NAME}_${GITHUB_RUN_ID} --artifact-name $SERVICE_NAME --registration-type RELEASE_STREAM --registration-value $RELEASE_STREAM --external-id $GITHUB_RUN_ID
+   
+
