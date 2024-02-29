@@ -19,8 +19,18 @@
     "rules": {
       "todo-backend": {
         "service_name": "${service.todo-backend.out.interfaces.http.name}",
-        "path": "/",
+        "path": "/api",
         "port": "${service.todo-backend.out.interfaces.http.port}",
+        "domain_prefix": "",
+        "annotations": {
+          "app": ""
+        },
+        "disable_auth": false
+      },
+      "todo-frontend": {
+        "service_name": "${service.todo-frontend.out.interfaces.http.name}",
+        "path": "/",
+        "port": "${service.todo-frontend.out.interfaces.http.port}",
         "domain_prefix": "",
         "annotations": {
           "app": ""
