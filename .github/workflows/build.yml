@@ -11,8 +11,8 @@ env:
   RELEASE_STREAM: "QA"
   QA_BRANCH: "master"
   CP_URL: "https://facetsdemo.console.facets.cloud/"
-  EMAIL: ${{ vars.FACETS_EMAIL }}
-  TOKEN: ${{ secrets.FACETS_TOKEN }}
+  EMAIL: "akshay@facets.cloud"
+  TOKEN: "5064d87b-a260-4c70-974b-0a1736b8b53a"
         
 jobs:
   build:
