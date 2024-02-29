@@ -20,8 +20,8 @@
         "type": "RollingUpdate"
       },
       "build": {
-        "artifactory": "default",
-        "name": "replace-with-app-name"
+        "artifactory": "facets-auto-config",
+        "name": "todo-frontend-ci"
       }
     },
     "runtime": {
