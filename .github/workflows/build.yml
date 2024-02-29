@@ -48,6 +48,6 @@ jobs:
         if [ "$TAG_NAME" == "$QA_BRANCH" ]; then RELEASE_STREAM="QA"; fi
         echo "Using release stream $RELEASE_STREAM"
         echo "Pushing Docker Image"
-        facetsctl push --docker-image $SERVICE_NAME:${TAG_NAME}_${GITHUB_RUN_ID} --artifact-name $SERVICE_NAME --registration-type RELEASE_STREAM --registration-value $RELEASE_STREAM --external-id $GITHUB_RUN_ID --artifactory facets-config-auto
+        facetsctl push --docker-image $SERVICE_NAME:${TAG_NAME}_${GITHUB_RUN_ID} --artifact-name $SERVICE_NAME --registration-type CLUSTER --registration-value 65dfece930bfd70007e7a0f0 --external-id $GITHUB_RUN_ID --artifactory facets-config-auto
    
 
