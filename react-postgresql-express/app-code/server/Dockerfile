@@ -2,12 +2,12 @@
 FROM node:18.17.1-alpine
 
 # Set the working directory
-WORKDIR /NODE-API-POSTGRES
+WORKDIR /server
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies, including knex
 RUN npm install
 
 # Copy the rest of the application code

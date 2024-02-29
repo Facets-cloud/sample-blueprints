@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-const apiUrl = 'http://localhost:1234';
+const apiUrl = 'http://localhost:5000';
 
 const PostUser = () => {
   
@@ -11,8 +11,8 @@ const PostUser = () => {
     const createUser = async () => {
       if(user?.email && user?.name) {   
         await axios
-        .delete(`${apiUrl}/users/create`, 
-        { data: {id: userId}},
+        .post(`${apiUrl}/users/create`, 
+        user,
         {
             headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

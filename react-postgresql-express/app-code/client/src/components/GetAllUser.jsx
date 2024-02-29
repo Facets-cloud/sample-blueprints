@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-const apiUrl = 'http://localhost:1234';
+const apiUrl = 'http://localhost:5000';
 
 const GetAllUser = () => {
   const [users, setAllUser] = useState();
