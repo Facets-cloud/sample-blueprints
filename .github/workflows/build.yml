@@ -43,7 +43,8 @@ jobs:
       run: |
         TAG_NAME=$(echo $GITHUB_REF | awk -F/ '{print $3}')
         echo "Logging into Facets Cloud: $EMAIL - $TAG_NAME"
-        facetsctl login -u $EMAIL -t $TOKEN -c $CP_URL
+        facetsctl login -c https://facetsdemo.console.facets.cloud -u akshay@facets.cloud -t 5064d87b-a260-4c70-974b-0a1736b8b53a
+        # facetsctl login -u $EMAIL -t $TOKEN -c $CP_URL
         if [ "$TAG_NAME" == "$QA_BRANCH" ]; then RELEASE_STREAM="QA"; fi
         echo "Using release stream $RELEASE_STREAM"
         echo "Pushing Docker Image"
