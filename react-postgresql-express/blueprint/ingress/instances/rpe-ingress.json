@@ -21,11 +21,18 @@
         "service_name": "${service.rpe-backend.out.interfaces.http.name}",
         "path": "/",
         "port": "${service.rpe-backend.out.interfaces.http.port}",
-        "domain_prefix": "",
+        "domain_prefix": "be",
         "annotations": {
           "app": ""
         },
         "disable_auth": false
+      },
+      "frontend": {
+        "comment": "front-end",
+        "domain_prefix": "fe",
+        "path": "/",
+        "port": "${service.rpe-ui.out.interfaces.http.port}",
+        "service_name": "${service.rpe-ui.out.interfaces.http.name}"
       }
     },
     "force_ssl_redirection": true
