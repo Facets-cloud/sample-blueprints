@@ -20,7 +20,7 @@
         "type": "RollingUpdate"
       },
       "build": {
-        "artifactory": "facets-auto-config",
+        "artifactory": "facets-config-auto",
         "name": "todo-frontend-ci"
       }
     },
