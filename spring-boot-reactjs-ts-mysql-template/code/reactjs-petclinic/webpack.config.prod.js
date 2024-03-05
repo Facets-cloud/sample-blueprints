@@ -11,6 +11,7 @@ const entries = [
 module.exports = {
   devtool: 'source-map',
   entry: entries,
+  public:true,
   output: {
     path: path.join(__dirname, 'public/dist/'),
     filename: 'bundle.js',
@@ -23,7 +24,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
       },
-       __API_SERVER_URL__: JSON.stringify('http://localhost:8080')
+       __API_SERVER_URL__: JSON.stringify('https://backend.main-petclinic-spring-react-petclinic.infra2.facetsdev.click')
     })
   ],
   resolve: {
