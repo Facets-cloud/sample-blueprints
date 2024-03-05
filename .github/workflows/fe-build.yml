@@ -1,0 +1,45 @@
+name: Docker Build PetClinic-ReactJs
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - spring-boot-reactjs-ts-mysql-template/code/reactjs-petclinic/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Install facetsctl
+        run: |
+          echo "Installing @facets-cloud/facetsctl"
+          npm install -g @facets-cloud/facetsctl
+          facetsctl --version
+
+      - name: Check out the code
+        uses: actions/checkout@v4.1.1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.1.0
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./spring-boot-reactjs-ts-mysql-template/code/reactjs-petclinic/
+          file: ./spring-boot-reactjs-ts-mysql-template/code/reactjs-petclinic/Dockerfile
+          push: false
+          load: true
+          tags: app/reactjs-petclinic:${{ github.run_id }}
+
+      - name: Login to facetsctl
+        run: facetsctl login -u samarthya@facets.cloud -t 299def0a-c888-4fef-90f0-6b0632b92eae -c https://facetsdemo.console.facets.cloud
+
+      - name: Push Image using facetsctl
+        run:  facetsctl push -i app/reactjs-petclinic:${{ github.run_id }} -a reactjs-petclinic-CI -e reactjs@${GITHUB_RUN_ID} --registration-type=RELEASE_STREAM --registration-value=DEV --artifactory facets-config-auto
