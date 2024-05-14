@@ -11,6 +11,11 @@
               "resource_type": "network",
               "resource_name": "default",
               "output_name": "legacy_outputs"
+          },
+          "network_details": {
+            "resource_type": "network",
+            "resource_name": "default",
+            "output_name": "legacy_outputs"
           }
       }
   }
