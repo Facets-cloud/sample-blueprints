@@ -1,12 +1,3 @@
-
 {
-    "$schema": "https://docs.facets.cloud/schemas/stack.schema",
-    "componentVersions": {
-        "KUBERNETES": "1.21"
-    },
-    "composition": {
-        "plugins": [
-        ]
-    },
     "clusterVariablesMeta": {}
 }

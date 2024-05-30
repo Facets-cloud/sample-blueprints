@@ -8,7 +8,7 @@
   "provided": false,
   "depends_on": [],
   "metadata": {
-    "name": "myingress",
+    "name": "main",
     "annotations": {}
   },
   "spec": {
