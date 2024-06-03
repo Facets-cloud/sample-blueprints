@@ -2,20 +2,8 @@
     "kind": "kubernetes_cluster",
     "flavor": "default",
     "version": "0.1",
-    "spec": {
-    },
+    "spec": {},
     "provided": false,
     "disabled": false,
-    "inputs": {
-          "legacy_outputs": {
-              "resource_type": "network",
-              "resource_name": "default",
-              "output_name": "legacy_outputs"
-          },
-          "network_details": {
-            "resource_type": "network",
-            "resource_name": "default",
-            "output_name": "legacy_outputs"
-          }
-      }
+    "inputs": {}
   }
