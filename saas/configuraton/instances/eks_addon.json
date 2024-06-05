@@ -2,7 +2,7 @@
   "kind": "configuration",
   "for": "eks_addon",
   "flavor": "default",
-  "version": "0.1",
+  "version": "0.2",
   "lifecycle": "ENVIRONMENT",
   "disabled": false,
   "provided": false,
