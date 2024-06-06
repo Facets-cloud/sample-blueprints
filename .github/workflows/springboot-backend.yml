@@ -1,4 +1,4 @@
-name: BUild PetClinic-SpringBoot using cliV3
+name: Build PetClinic-SpringBoot Using CLIv3
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
   CP_URL: "https://facetsdemo.console.facets.cloud"
   EMAIL: "samarthya@facets.cloud"
   TOKEN: "299def0a-c888-4fef-90f0-6b0632b92eae"
-  ARTIFACTORY_NAME: "facets-config-auto"
+  ARTIFACTORY_NAME: "default"
   DOCKER_IMAGE: "app/springboot-petclinic-new:${{ github.run_id }}"
   REGISTRATION_TYPE: "RELEASE_STREAM"
   REGISTRATION_VALUE: "DEV"
