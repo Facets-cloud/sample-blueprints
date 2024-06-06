@@ -1,0 +1,51 @@
+name: Docker Build PetClinic-SpringBoot
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - spring-boot-reactjs-ts-mysql-template/code/springboot-petclinic/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Install facetsctlv3
+        run: |
+          echo "Installing @facets-cloud/facetsctlv3"
+          npm install -g @facets-cloud/facetsctlv3
+          facetsctl --version
+
+      - name: Check out the code
+        uses: actions/checkout@v4.1.1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.1.0
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./spring-boot-reactjs-ts-mysql-template/code/springboot-petclinic/
+          file: ./spring-boot-reactjs-ts-mysql-template/code/springboot-petclinic/Dockerfile
+          push: false
+          load: true
+          tags: app/springboot-petclinic:${{ github.run_id }}
+
+      - name: Login to facetsctlv3
+        run: facetsctl login -u samarthya@facets.cloud -t 62f303c8-ee53-41dc-81f4-40873b446616 -f https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud
+
+      - name: Initialize artifact
+        run: facetsctl artifact init -p starter-project-demo -s petclinic-springboot -a facets-config-auto
+
+      - name: Push artifact
+        run: facetsctl artifact push -d app/springboot-petclinic:${{ github.run_id }}
+
+      - name: Register artifact
+        run: facetsctl artifact register -t GIT_REF -i app/springboot-petclinic:${{ github.run_id }} -v master -r ${{ github.run_id }}
