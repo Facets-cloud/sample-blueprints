@@ -1,4 +1,4 @@
-name: Docker Build PetClinic-SpringBoot
+name: PetClinic-SpringBoot facetsctlV3
 
 on:
   push:
