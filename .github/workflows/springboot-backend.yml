@@ -36,7 +36,7 @@ jobs:
           file: ./spring-boot-reactjs-ts-mysql-template/code/springboot-petclinic/Dockerfile
           push: false
           load: true
-          tags: app/springboot-petclinic:${{ github.run_id }}
+          tags: app/springboot-petclinic-new:${{ github.run_id }}
 
       - name: Login to facetsctlv3
         run: facetsctl login -u samarthya@facets.cloud -t 62f303c8-ee53-41dc-81f4-40873b446616 -f https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud
@@ -45,7 +45,7 @@ jobs:
         run: facetsctl artifact init -p starter-project-demo -s petclinic-springboot -a default
 
       - name: Push artifact
-        run: facetsctl artifact push -d app/springboot-petclinic:${{ github.run_id }}
+        run: facetsctl artifact push -d app/springboot-petclinic-new:${{ github.run_id }}
 
       - name: Register artifact
-        run: facetsctl artifact register -t GIT_REF -i app/springboot-petclinic:${{ github.run_id }} -v master -r ${{ github.run_id }}
+        run: facetsctl artifact register -t GIT_REF -i app/springboot-petclinic-new:${{ github.run_id }} -v master -r ${{ github.run_id }}
