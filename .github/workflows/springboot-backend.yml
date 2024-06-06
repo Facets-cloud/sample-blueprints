@@ -1,4 +1,4 @@
-name: PetClinic-SpringBoot facetsctlV3
+name: BUild PetClinic-SpringBoot using cliV3
 
 on:
   push:
@@ -8,20 +8,26 @@ on:
       - spring-boot-reactjs-ts-mysql-template/code/springboot-petclinic/**
   workflow_dispatch:
 
+env:
+  SERVICE_NAME: "springboot-petclinic"
+  CP_URL: "https://facetsdemo.console.facets.cloud"
+  EMAIL: "samarthya@facets.cloud"
+  TOKEN: "299def0a-c888-4fef-90f0-6b0632b92eae"
+  ARTIFACTORY_NAME: "facets-config-auto"
+  DOCKER_IMAGE: "app/springboot-petclinic-new:${{ github.run_id }}"
+  REGISTRATION_TYPE: "RELEASE_STREAM"
+  REGISTRATION_VALUE: "DEV"
+  RUN_ID: ${{ github.run_id }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
           node-version: 20
-
-      - name: Install facetsctlv3
-        run: |
-          echo "Installing @facets-cloud/facetsctlv3"
-          npm install -g @facets-cloud/facetsctlv3
-          facetsctl --version
 
       - name: Check out the code
         uses: actions/checkout@v4.1.1
@@ -36,16 +42,30 @@ jobs:
           file: ./spring-boot-reactjs-ts-mysql-template/code/springboot-petclinic/Dockerfile
           push: false
           load: true
-          tags: app/springboot-petclinic-new:${{ github.run_id }}
+          tags: ${{ env.DOCKER_IMAGE }}
+
+      - name: Install facetsctlv3
+        run: |
+          echo "Installing @facets-cloud/facetsctlv3"
+          npm install -g @facets-cloud/facetsctlv3
+          facetsctl --version
 
       - name: Login to facetsctlv3
-        run: facetsctl login -u samarthya@facets.cloud -t 62f303c8-ee53-41dc-81f4-40873b446616 -f https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud
+        run: |
+          echo "Logging into Facets Cloud"
+          facetsctl login -u ${{ env.EMAIL }} -t ${{ env.TOKEN }} -f ${{ env.CP_URL }}
 
       - name: Initialize artifact
-        run: facetsctl artifact init -p starter-project-demo -s petclinic-springboot -a default
+        run: |
+          echo "Initializing artifact"
+          facetsctl artifact init -p ${{ env.SERVICE_NAME }} -s springboot -a ${{ env.ARTIFACTORY_NAME }}
 
       - name: Push artifact
-        run: facetsctl artifact push -d app/springboot-petclinic-new:${{ github.run_id }}
+        run: |
+          echo "Pushing artifact"
+          facetsctl artifact push -d ${{ env.DOCKER_IMAGE }}
 
       - name: Register artifact
-        run: facetsctl artifact register -t GIT_REF -i app/springboot-petclinic-new:${{ github.run_id }} -v master -r ${{ github.run_id }}
+        run: |
+          echo "Registering artifact"
+          facetsctl artifact register -t ${{ env.REGISTRATION_TYPE }} -i ${{ env.DOCKER_IMAGE }} -v ${{ env.REGISTRATION_VALUE }} -r ${{ env.RUN_ID }}
