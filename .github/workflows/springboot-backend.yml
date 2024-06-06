@@ -42,7 +42,7 @@ jobs:
         run: facetsctl login -u samarthya@facets.cloud -t 62f303c8-ee53-41dc-81f4-40873b446616 -f https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud
 
       - name: Initialize artifact
-        run: facetsctl artifact init -p starter-project-demo -s petclinic-springboot -a facets-config-auto
+        run: facetsctl artifact init -p starter-project-demo -s petclinic-springboot -a default
 
       - name: Push artifact
         run: facetsctl artifact push -d app/springboot-petclinic:${{ github.run_id }}
