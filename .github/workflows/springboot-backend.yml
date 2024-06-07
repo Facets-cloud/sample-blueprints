@@ -1,4 +1,4 @@
-name: Build PetClinic-SpringBoot Using CLIv3
+name: Docker Build PetClinic-SpringBoot Using CLIv3
 
 on:
   push:
@@ -13,8 +13,8 @@ env:
   CP_URL: "https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud"
   EMAIL: "samarthya@facets.cloud"
   TOKEN: "62f303c8-ee53-41dc-81f4-40873b446616"
-  ARTIFACTORY_NAME: "default"
-  DOCKER_IMAGE: "app/springboot-petclinic-new:${{ github.run_id }}"
+  ARTIFACTORY_NAME: "facets-config-auto"
+  DOCKER_IMAGE: "app/springboot-petclinic:${{ github.run_id }}"
   REGISTRATION_TYPE: "GIT_REF"
   REGISTRATION_VALUE: "master"
   RUN_ID: ${{ github.run_id }}
@@ -28,6 +28,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 20
+
+      - name: Install facetsctlv3
+        run: |
+          echo "Installing @facets-cloud/facetsctlv3"
+          npm install -g @facets-cloud/facetsctlv3
+          facetsctl --version
 
       - name: Check out the code
         uses: actions/checkout@v4.1.1
@@ -43,12 +49,6 @@ jobs:
           push: false
           load: true
           tags: ${{ env.DOCKER_IMAGE }}
-
-      - name: Install facetsctlv3
-        run: |
-          echo "Installing @facets-cloud/facetsctlv3"
-          npm install -g @facets-cloud/facetsctlv3
-          facetsctl --version
 
       - name: Login to facetsctlv3
         run: |
