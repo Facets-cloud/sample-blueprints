@@ -1,8 +1,9 @@
 {
-  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
-  "flavor": "default",
+  "flavor": "k8s",
   "metadata": {
-    "labels": {},
+    "labels": {
+      "deliveryType": "OWN"
+    },
     "git": {
       "repository_url": "https://github.com/Facets-cloud/sample-blueprints.git",
       "path": "spring-boot-reactjs-ts-mysql-template /blueprint"
@@ -19,10 +20,7 @@
       "strategy": {
         "type": "RollingUpdate"
       },
-      "build": {
-        "artifactory": "facets-config-auto",
-        "name": "reactjs-petclinic-CI"
-      }
+      "image": "${blueprint.self.artifacts.starter-project-demo-petclinic-reactjs}"
     },
     "runtime": {
       "autoscaling": {

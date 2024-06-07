@@ -1,8 +1,9 @@
 {
-  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
-  "flavor": "default",
+  "flavor": "k8s",
   "metadata": {
-    "labels": {}
+    "labels": {
+      "deliveryType": "OWN"
+    }
   },
   "kind": "service",
   "disabled": false,
@@ -15,10 +16,7 @@
       "strategy": {
         "type": "RollingUpdate"
       },
-      "build": {
-        "artifactory": "facets-config-auto",
-        "name": "springboot-petclinic-CI"
-      }
+      "image": "${blueprint.self.artifacts.starter-project-demo-petclinic-springboot}"
     },
     "runtime": {
       "autoscaling": {
