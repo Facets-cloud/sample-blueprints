@@ -15,8 +15,8 @@ env:
   TOKEN: "62f303c8-ee53-41dc-81f4-40873b446616"
   ARTIFACTORY_NAME: "default"
   DOCKER_IMAGE: "app/springboot-petclinic-new:${{ github.run_id }}"
-  REGISTRATION_TYPE: "RELEASE_STREAM"
-  REGISTRATION_VALUE: "DEV"
+  REGISTRATION_TYPE: "GIT_REF"
+  REGISTRATION_VALUE: "master"
   RUN_ID: ${{ github.run_id }}
 
 jobs:
