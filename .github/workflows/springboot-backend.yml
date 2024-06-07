@@ -10,9 +10,9 @@ on:
 
 env:
   SERVICE_NAME: "springboot-petclinic"
-  CP_URL: "https://facetsdemo.console.facets.cloud"
+  CP_URL: "https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud"
   EMAIL: "samarthya@facets.cloud"
-  TOKEN: "299def0a-c888-4fef-90f0-6b0632b92eae"
+  TOKEN: "62f303c8-ee53-41dc-81f4-40873b446616"
   ARTIFACTORY_NAME: "default"
   DOCKER_IMAGE: "app/springboot-petclinic-new:${{ github.run_id }}"
   REGISTRATION_TYPE: "RELEASE_STREAM"
