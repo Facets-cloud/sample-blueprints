@@ -14,6 +14,7 @@
   "provided": false,
   "version": "0.1",
   "spec": {
+    "restart_policy": "OnFailure",
     "enable_host_anti_affinity": false,
     "type": "application",
     "release": {
