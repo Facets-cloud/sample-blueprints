@@ -13,7 +13,7 @@ env:
   CP_URL: "https://demo.control-plane-saas-cp-saas-dev.console.facets.cloud"
   EMAIL: "samarthya@facets.cloud"
   TOKEN: "62f303c8-ee53-41dc-81f4-40873b446616"
-  ARTIFACTORY_NAME: "default"
+  ARTIFACTORY_NAME: "facets-config-auto"
   DOCKER_IMAGE: "app/springboot-petclinic:${{ github.run_id }}"
   REGISTRATION_TYPE: "GIT_REF"
   REGISTRATION_VALUE: "master"
