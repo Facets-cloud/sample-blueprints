@@ -24,7 +24,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
       },
-       __API_SERVER_URL__: JSON.stringify('https://backend.main-petclinic-spring-react-petclinic.infra2.facetsdev.click')
+       __API_SERVER_URL__: JSON.stringify('https://backend.main-starter-project-demo-dev.saas.facets.cloud')
     })
   ],
   resolve: {
