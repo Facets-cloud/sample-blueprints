@@ -11,7 +11,7 @@ const entries = [
 module.exports = {
   devtool: 'source-map',
   entry: entries,
-  public: true,
+  public:true,
   output: {
     path: path.join(__dirname, 'public/dist/'),
     filename: 'bundle.js',
@@ -24,7 +24,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
       },
-      __API_SERVER_URL__: JSON.stringify('/api')
+       __API_SERVER_URL__: JSON.stringify('https://backend.main-starter-project-demo-dev.saas.facets.cloud')
     })
   ],
   resolve: {
