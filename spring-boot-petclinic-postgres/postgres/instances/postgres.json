@@ -1,0 +1,35 @@
+{
+  "flavor": "k8s",
+  "metadata": {},
+  "kind": "postgres",
+  "disabled": false,
+  "version": "0.1",
+  "spec": {
+    "postgres_version": "15.3.0",
+    "size": {
+      "writer": {
+        "cpu": "250m",
+        "memory": "256Mi",
+        "cpu_limit": "500m",
+        "memory_limit": "512Mi",
+        "volume": "10Gi"
+      },
+      "Reader": {
+        "cpu": "250m",
+        "memory": "256Mi",
+        "cpu_limit": "500m",
+        "memory_limit": "512Mi",
+        "volume": "10Gi",
+        "instance_count": 0
+      },
+      "reader": {
+        "cpu": "250m",
+        "memory": "256Mi",
+        "cpu_limit": "500m",
+        "memory_limit": "512Mi",
+        "volume": "10Gi",
+        "instance_count": "0"
+      }
+    }
+  }
+}
