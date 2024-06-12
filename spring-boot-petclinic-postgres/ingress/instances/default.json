@@ -1,0 +1,23 @@
+{
+  "flavor": "nginx_k8s_native",
+  "metadata": {
+    "annotations": {}
+  },
+  "kind": "ingress",
+  "disabled": false,
+  "version": "0.1",
+  "spec": {
+    "basicAuth": false,
+    "grpc": false,
+    "private": false,
+    "rules": {
+      "petclinic": {
+        "service_name": "${service.new-service.out.interfaces.http.name}",
+        "path": "/",
+        "port": "8080"
+      }
+    },
+    "force_ssl_redirection": true,
+    "env": {}
+  }
+}
