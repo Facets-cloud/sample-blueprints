@@ -12,7 +12,7 @@
     "private": false,
     "rules": {
       "petclinic": {
-        "service_name": "${service.new-service.out.interfaces.http.name}",
+        "service_name": "${service.petclinic.out.interfaces.http.name}",
         "path": "/",
         "port": "8080"
       }
