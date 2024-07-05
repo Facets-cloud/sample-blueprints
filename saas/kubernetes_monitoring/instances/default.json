@@ -3,7 +3,7 @@
   "flavor": "k8s",
   "version": "0.1",
   "lifecycle": "ENVIRONMENT",
-  "disabled": true,
+  "disabled": false,
   "provided": false,
   "depends_on": [],
   "metadata": {
