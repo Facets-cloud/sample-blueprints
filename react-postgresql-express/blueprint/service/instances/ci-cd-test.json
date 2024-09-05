@@ -1,0 +1,44 @@
+{
+  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/service/service.schema.json",
+  "flavor": "k8s",
+  "metadata": {
+    "labels": {
+      "deliveryType": "MANUAL"
+    }
+  },
+  "kind": "service",
+  "disabled": true,
+  "version": "0.1",
+  "spec": {
+    "enable_host_anti_affinity": false,
+    "type": "application",
+    "restart_policy": "Always",
+    "release": {
+      "strategy": {
+        "type": "RollingUpdate"
+      },
+      "image": "${blueprint.self.artifacts.rpe-demo-ci-cd-test}"
+    },
+    "runtime": {
+      "args": [],
+      "command": [],
+      "autoscaling": {
+        "scaling_on": "CPU",
+        "min": "1",
+        "max": "1",
+        "cpu_threshold": "50"
+      },
+      "ports": {},
+      "size": {
+        "cpu": "300m",
+        "memory": "1Gi",
+        "cpu_limit": "1000m",
+        "memory_limit": "5Gi"
+      },
+      "volumes": {}
+    },
+    "env": {
+      "LOG_LEVEL": "INFO"
+    }
+  }
+}
