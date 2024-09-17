@@ -1,11 +1,11 @@
-import * as dotenv from "dotenv";
+// import * as dotenv from "dotenv";
 import cors from "cors";
 import { connectToDatabase } from "./database";
 import { todoRouter } from "./todo.route";
 var express = require("express");
 
 // Load environment variables from the .env file, where the MONGO_DB_URI is configured
-dotenv.config();
+// dotenv.config();
 const { MONGO_DB_URI } = process.env;
 
 if (!MONGO_DB_URI) {
