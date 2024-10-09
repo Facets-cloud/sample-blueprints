@@ -1,0 +1,30 @@
+{
+  "flavor": "k8s",
+  "metadata": {},
+  "$schema": "https://facets-cloud.github.io/facets-schemas/schemas/redis/redis.schema.json",
+  "kind": "redis",
+  "disabled": true,
+  "version": "0.1",
+  "spec": {
+    "authenticated": true,
+    "redis_version": "6.2",
+    "persistence_enabled": false,
+    "size": {
+      "writer": {
+        "cpu": "1",
+        "memory": "1G",
+        "cpu_limit": "1",
+        "memory_limit": "1G",
+        "volume": "10Gi"
+      },
+      "reader": {
+        "cpu": "1",
+        "memory": "1G",
+        "cpu_limit": "1",
+        "memory_limit": "1G",
+        "volume": "10Gi",
+        "instance_count": 0
+      }
+    }
+  }
+}
