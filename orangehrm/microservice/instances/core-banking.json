@@ -6,7 +6,7 @@
   "spec": {
     "service_name": "core-banking-api",
     "namespace": "core-banking",
-    "replicas": 2,
+    "replicas": 3,
     "containers": {
       "api": {
         "image": "banking/core-api",
@@ -53,14 +53,26 @@
         "name": "loan-eligibility-service",
         "path": "/accounts/*",
         "http_methods": {
-          "get": true
+          "get": true,
+          "post": false,
+          "put": false,
+          "delete": false,
+          "patch": false,
+          "head": false,
+          "options": false
         }
       },
       "kyc": {
         "name": "kyc-service",
         "path": "/customers/verify",
         "http_methods": {
-          "post": true
+          "get": false,
+          "post": true,
+          "put": false,
+          "delete": false,
+          "patch": false,
+          "head": false,
+          "options": false
         }
       },
       "payments": {
@@ -68,7 +80,25 @@
         "path": "/transactions",
         "http_methods": {
           "get": true,
-          "post": true
+          "post": true,
+          "put": false,
+          "delete": false,
+          "patch": false,
+          "head": false,
+          "options": false
+        }
+      },
+      "whitelisted-callers1": {
+        "name": "audit-service",
+        "path": "/",
+        "http_methods": {
+          "get": true,
+          "post": false,
+          "put": false,
+          "delete": false,
+          "patch": false,
+          "head": false,
+          "options": false
         }
       }
     }
