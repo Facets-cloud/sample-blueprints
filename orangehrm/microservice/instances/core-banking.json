@@ -1,0 +1,69 @@
+{
+  "kind": "microservice",
+  "flavor": "standard",
+  "version": "1.0",
+  "disabled": false,
+  "spec": {
+    "service_name": "example-service",
+    "namespace": "default",
+    "replicas": 2,
+    "containers": {
+      "app": {
+        "image": "nginx",
+        "tag": 1.19,
+        "port": 8080,
+        "env_vars": {
+          "LOG_LEVEL": "info"
+        },
+        "resources": {
+          "requests": {
+            "cpu": "200m",
+            "memory": "256Mi"
+          },
+          "limits": {
+            "cpu": "500m",
+            "memory": "512Mi"
+          }
+        }
+      }
+    },
+    "service_ports": {
+      "http": {
+        "port": 80,
+        "target_port": 8080,
+        "protocol": "TCP"
+      }
+    },
+    "health_checks": {
+      "liveness": {
+        "path": "/health/liveness",
+        "port": 8080,
+        "initial_delay_seconds": 15,
+        "period_seconds": 20
+      },
+      "readiness": {
+        "path": "/health/readiness",
+        "port": 8080,
+        "initial_delay_seconds": 5,
+        "period_seconds": 10
+      }
+    },
+    "whitelisted_callers": {
+      "frontend": {
+        "name": "frontend-service",
+        "path": "/api/*",
+        "http_methods": {
+          "get": true,
+          "post": true
+        }
+      },
+      "monitoring": {
+        "name": "monitoring-service",
+        "path": "/metrics",
+        "http_methods": {
+          "get": true
+        }
+      }
+    }
+  }
+}
