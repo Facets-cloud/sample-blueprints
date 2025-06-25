@@ -1,0 +1,17 @@
+{
+  "kind": "kubernetes_cluster",
+  "flavor": "aws_eks",
+  "version": "0.2",
+  "lifecycle": "ENVIRONMENT",
+  "disabled": true,
+  "depends_on": [],
+  "metadata": {},
+  "spec": {},
+  "advanced": {},
+  "inputs": {
+    "network_details": {
+      "resource_name": "default",
+      "resource_type": "network"
+    }
+  }
+}
