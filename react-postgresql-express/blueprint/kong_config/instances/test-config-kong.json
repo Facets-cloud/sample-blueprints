@@ -1,0 +1,17 @@
+{
+  "disabled": true,
+  "flavor": "niyo",
+  "kind": "kong_config",
+  "spec": {
+    "config_name": "kong-config",
+    "format_version": "1.1",
+    "namespace": "default"
+  },
+  "version": "0.1",
+  "inputs": {
+    "kubernetes_cluster": {
+      "resource_name": "default",
+      "resource_type": "kubernetes_cluster"
+    }
+  }
+}
